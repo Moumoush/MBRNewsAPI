@@ -31,6 +31,7 @@ project.ext {
                         coroutines_android: '1.6.4',
                         coroutines_rx2    : '1.6.4',
                         kotlin_rx2        : '2.4.0',
+                        rx2        : '2.0.1',
                 ],
                 di       : [
                         koin: '3.2.0',
@@ -97,6 +98,7 @@ project.ext {
                         coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.dependencies_versions.async.coroutines_android",
                         coroutines_rx2    : "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$rootProject.ext.dependencies_versions.async.coroutines_rx2",
 
+                        rx2: "io.reactivex.rxjava2:rxandroid:$rootProject.ext.dependencies_versions.async.rx2",
                         kotlin_rx2        : "io.reactivex.rxjava2:rxkotlin:$rootProject.ext.dependencies_versions.async.kotlin_rx2",
                         prefs_rx2         : "com.f2prateek.rx.preferences2:rx-preferences:$rootProject.ext.dependencies_versions.async.prefs_rx2",
                 ],

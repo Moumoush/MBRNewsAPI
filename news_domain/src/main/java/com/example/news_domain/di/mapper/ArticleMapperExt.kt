@@ -1,4 +1,4 @@
-package com.example.news_domain.mapper
+package com.example.news_domain.di.mapper
 
 import com.example.news_data.dto.ArticleResponse
 import com.example.news_data.dto.BrandRelatedArticleResponse
