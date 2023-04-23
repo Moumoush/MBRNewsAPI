@@ -25,7 +25,7 @@ open class MBRNewsState{
     class Loading : MBRNewsState()
     data class Success(
         val articles: Articles,
-        val onArticleSelected : (id : String) -> Unit
+        val onArticleSelected : (id : Int) -> Unit
     ) : MBRNewsState()
 }
 
@@ -49,7 +49,7 @@ fun MBRNewsList(state: MBRNewsState){
                                 GlideImage(model = it.urlToImage,
                                     modifier = Modifier
                                         .padding(24.dp)
-                                        .clickable(onClick = { state.onArticleSelected.invoke(item.id) })
+                                        .clickable(onClick = { state.onArticleSelected.invoke(index) })
                                         .fillParentMaxSize(),
                                     contentDescription = item.title
                                 )

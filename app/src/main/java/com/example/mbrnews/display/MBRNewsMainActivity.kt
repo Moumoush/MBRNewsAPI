@@ -12,6 +12,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mbrnews.display.news.NewsViewModel
+import com.example.mbrnews.display.ui.design_system.MBRArticleDetail
+import com.example.mbrnews.display.ui.design_system.MBRArticleDetailState
+import com.example.mbrnews.display.ui.design_system.MBRNewsList
 import com.example.mbrnews.display.ui.theme.MBRNewsAPITheme
 import org.koin.android.ext.android.inject
 
@@ -29,6 +32,11 @@ class MBRNewsMainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android")
+                    if(state.articleState is MBRArticleDetailState.NONE) {
+                        MBRNewsList(state = state.newsState)
+                    }else if (state.articleState is MBRArticleDetailState.Display) {
+                        MBRArticleDetail(detail = state.articleState)
+                    }
                 }
             }
         }

@@ -6,8 +6,6 @@ import com.example.news_domain.NewsRepository
 import com.example.news_domain.di.mapper.toModel
 import com.example.news_domain.model.Articles
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
 
 class NewsDataRepository(val newsService : NewsService) : NewsRepository {
     override fun loadEveryArticle(): Single<Articles> = newsService.getEverything()
