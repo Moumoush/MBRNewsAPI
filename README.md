@@ -6,6 +6,13 @@ Temps de réalisation 7h (avec un blockage de 1h30 -_-" sur un duplicat de class
 
 Affichage sommaire
 
+Je voulais ajouter room pour essayer de montrer le fonctionnement du repo avec deux sources de données pour montrer un cas il ferait un peut plus que simple mapper d'objets 
+
+Et room est assez simple d'utilisation comme base de donnée même si elle stock les données en clair (il faut juste savoir quoi garder en clair et quoi sécuriser)
+
+J'utilise Moshi pour le parsing json car je le trouve adapté à kotlin dans l'utilisation (simple)
+
+
 ## Fichier à part pour les libs
 
 Pour éviter sur un seul projet avec plusieurs modules de gérer les versions de lib module par module et permettre de facilité plus tard la gestion des script de montés de versions/libs qui seront dépendant de la ci/cd mise en place.
@@ -18,6 +25,9 @@ Dans le découpage de l'application je me suis basé sur les principes de décou
 
 Pourquoi rx, parce que j'avais pas le temps et comme je maîtrise mieux, c'est plus simple
 
+## Injection de dépendances
+
+J'ai utilisé Koin pour sa simplicité même si je n'ai pas passé beaucoup de temps à bien l'utiliser (je pense que j'en fais une mauvaise utilisation dans le découpage en module -> variables globales)
 
 ## Affichage
 
