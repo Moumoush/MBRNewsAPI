@@ -1,0 +1,136 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.mbrnews'
+    compileSdkVersion rootProject.ext.config_versions.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.example.mbrnews"
+        minSdkVersion rootProject.ext.config_versions.minSdkVersion
+        targetSdkVersion rootProject.ext.config_versions.targetSdkVersion
+
+        versionCode rootProject.ext.config_versions.versionCode
+        versionName rootProject.ext.config_versions.versionName
+        versionNameSuffix ''
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation "androidx.compose.ui:ui:$compose_ui_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
+    implementation 'androidx.compose.material:material:1.2.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+    //News
+    implementation project(rootProject.ext.dependencies.news.news_domain)
+
+    //Kotlin
+    implementation rootProject.ext.dependencies.code.kotlin
+    implementation rootProject.ext.dependencies.code.ktx_core
+
+    //Android UI
+    implementation rootProject.ext.dependencies.ui.appcompat
+    implementation rootProject.ext.dependencies.ui.material
+    implementation rootProject.ext.dependencies.ui.lifecycle_runtime
+    implementation rootProject.ext.dependencies.ui.lifecycle_viewmodel
+    implementation rootProject.ext.dependencies.ui.lifecycle_livedata
+
+    //Glide library
+    implementation(rootProject.ext.dependencies.ui.glide) {
+        transitive = true
+    }
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+    kapt(rootProject.ext.processors.ui.glide)
+    // Compose
+    implementation platform(rootProject.ext.platforms_bom.ui.compose)
+    implementation rootProject.ext.dependencies.ui.compose_material
+    implementation rootProject.ext.dependencies.ui.compose_animation
+    implementation rootProject.ext.dependencies.ui.compose_ui_tooling
+    implementation rootProject.ext.dependencies.ui.compose_activity
+    implementation rootProject.ext.dependencies.ui.lifecycle_compose
+
+    //Async
+    implementation rootProject.ext.dependencies.async.coroutines
+    implementation rootProject.ext.dependencies.async.coroutines_android
+    implementation rootProject.ext.dependencies.async.kotlin_rx2
+
+    //Dependency Injection (DI)
+    implementation rootProject.ext.dependencies.di.koin
+
+    //Room Database
+    kapt(rootProject.ext.processors.db.room)
+    implementation rootProject.ext.dependencies.db.room_runtime
+    implementation rootProject.ext.dependencies.db.room_rx2
+
+    //Network - Retrofit - OkHttp
+    implementation rootProject.ext.dependencies.network.okhttp3
+    implementation rootProject.ext.dependencies.network.okhttp3_interceptor
+    implementation rootProject.ext.dependencies.network.retrofit2
+    implementation rootProject.ext.dependencies.network.retrofit2_rx2
+    //converters
+    implementation rootProject.ext.dependencies.converter.moshi
+
+
+    //imports
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    /// Testing
+    testImplementation rootProject.ext.dependencies.tests.junit5
+    testRuntimeOnly rootProject.ext.dependencies.tests.junit5_engine
+    testImplementation rootProject.ext.dependencies.tests.junit5_params
+    testImplementation rootProject.ext.dependencies.tests.mockito
+
+    testImplementation rootProject.ext.dependencies.tests.kotlin_corroutines_test
+
+    androidTestImplementation rootProject.ext.dependencies.tests.mockito_dex
+}

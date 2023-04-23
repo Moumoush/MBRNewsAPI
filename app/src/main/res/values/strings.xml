@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MBRNews</string>
+    <string name="title_activity_mbrnews_main">MBRNewsMainActivity</string>
+</resources>

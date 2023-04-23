@@ -1,0 +1,135 @@
+project.ext {
+        config_versions=
+        [
+                minSdkVersion    : 26,
+                targetSdkVersion : 33,
+                compileSdkVersion: 33,
+                versionCode      : 1,
+                versionName      : '0.0.1'
+        ]
+        dependencies_versions=
+        [
+                news: [
+
+                ],
+                code     : [
+                        kotlin  : '1.7.20',
+                        ktx_core: '1.9.0',
+                ],
+                db       : [
+                        room: '2.5.0',
+                ],
+                network  : [
+                        okhttp3  : '4.9.0',
+                        retrofit2: '2.8.1'
+                ],
+                converter: [
+                        moshi: '2.4.0',
+                ],
+                async    : [
+                        coroutines        : '1.6.2',
+                        coroutines_android: '1.6.4',
+                        coroutines_rx2    : '1.6.4',
+                        kotlin_rx2        : '2.4.0',
+                ],
+                di       : [
+                        koin: '3.2.0',
+                ],
+                ui       : [
+                        lifecycle            : '2.5.1',
+                        glide                : '4.11.0',
+                        compose              : '2023.01.00',
+                        compose_activity     : '1.6.1',
+                        material             : '1.7.0',
+                        appcompat             : '1.6.0',
+                ],
+                tests    : [
+                        junit5                 : '5.8.2',
+                        mockito                : '2.28.2',
+                        kotlin_corroutines_test: '1.6.4',
+                        mockito_dex            : '1.2',
+                ]
+        ]
+        platforms_bom=
+        [
+                ui       : [
+                        compose: "androidx.compose:compose-bom:$rootProject.ext.dependencies_versions.ui.compose"
+                ]
+        ]
+        processors=
+        [
+                ui: [
+                        //kapt
+                        glide                : "com.github.bumptech.glide:compiler:$rootProject.ext.dependencies_versions.ui.glide"
+                ],
+                db: [
+                        room: "androidx.room:room-compiler:$rootProject.ext.dependencies_versions.db.room"
+                ]
+        ]
+        dependencies =
+        [
+                news: [
+
+                        //Domyos bluetooth sdk
+                        news_data       : ':news_data',
+                        news_domain : ':news_domain'
+
+                ],
+                code     : [
+                        kotlin  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.ext.dependencies_versions.code.kotlin",
+                        ktx_core: "androidx.core:core-ktx:$rootProject.ext.dependencies_versions.code.ktx_core",
+                ],
+                db       : [
+                        room_runtime: "androidx.room:room-runtime:$rootProject.ext.dependencies_versions.db.room",
+                        room_rx2    : "androidx.room:room-rxjava2:$rootProject.ext.dependencies_versions.db.room",
+                ],
+                network  : [
+                        okhttp3            : "com.squareup.okhttp3:okhttp:$rootProject.ext.dependencies_versions.network.okhttp3",
+                        okhttp3_interceptor: "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.dependencies_versions.network.okhttp3",
+                        retrofit2          : "com.squareup.retrofit2:retrofit:$rootProject.ext.dependencies_versions.network.retrofit2",
+                        retrofit2_rx2      : "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.dependencies_versions.network.retrofit2",
+                ],
+                converter: [
+                        moshi              : "com.squareup.retrofit2:converter-moshi:$rootProject.ext.dependencies_versions.converter.moshi",
+                ],
+                async    : [
+                        coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.dependencies_versions.async.coroutines",
+                        coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.dependencies_versions.async.coroutines_android",
+                        coroutines_rx2    : "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$rootProject.ext.dependencies_versions.async.coroutines_rx2",
+
+                        kotlin_rx2        : "io.reactivex.rxjava2:rxkotlin:$rootProject.ext.dependencies_versions.async.kotlin_rx2",
+                        prefs_rx2         : "com.f2prateek.rx.preferences2:rx-preferences:$rootProject.ext.dependencies_versions.async.prefs_rx2",
+                ],
+                di       : [
+                        koin: "io.insert-koin:koin-android:$rootProject.ext.dependencies_versions.di.koin",
+                ],
+                ui       : [
+                        lifecycle_runtime           : "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.dependencies_versions.ui.lifecycle",
+                        lifecycle_viewmodel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.dependencies_versions.ui.lifecycle",
+                        lifecycle_livedata          : "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.dependencies_versions.ui.lifecycle",
+                        lifecycle_compose           : "androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.ext.dependencies_versions.ui.lifecycle",
+
+                        glide                       : "com.github.bumptech.glide:glide:$rootProject.ext.dependencies_versions.ui.glide",
+
+                        compose_activity            : "androidx.activity:activity-compose:$rootProject.ext.dependencies_versions.ui.compose_activity",
+
+
+                        //need bom to be first imported to use dependencies without versions attached
+                        compose_material            : "androidx.compose.material:material",
+                        compose_animation           : "androidx.compose.animation:animation",
+                        compose_ui_tooling          : "androidx.compose.ui:ui-tooling",
+                        appcompat     : "androidx.appcompat:appcompat:$rootProject.ext.dependencies_versions.ui.appcompat",
+                        material      : "com.google.android.material:material:$rootProject.ext.dependencies_versions.ui.material",
+                ],
+                tests    : [
+                        junit5                 : "org.junit.jupiter:junit-jupiter-api:$rootProject.ext.dependencies_versions.tests.junit5",
+                        junit5_engine          : "org.junit.jupiter:junit-jupiter-engine:$rootProject.ext.dependencies_versions.tests.junit5",//testRuntime
+                        junit5_params          : "org.junit.jupiter:junit-jupiter-params:$rootProject.ext.dependencies_versions.tests.junit5",//testImplementation
+
+                        mockito                : "org.mockito:mockito-core:$rootProject.ext.dependencies_versions.tests.mockito", //testImplementation
+
+                        kotlin_corroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:$rootProject.ext.dependencies_versions.tests.kotlin_corroutines_test",//testImplementation
+                        mockito_dex            : "com.google.dexmaker:dexmaker-mockito:$rootProject.ext.dependencies_versions.tests.mockito_dex",//androidTestImplementation
+                ],
+        ]
+}
