@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
 }
 android {
     namespace 'com.example.news_data'
@@ -52,6 +53,7 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+
     //Kotlin
     implementation rootProject.ext.dependencies.code.kotlin
     implementation rootProject.ext.dependencies.code.ktx_core

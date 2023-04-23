@@ -2,6 +2,7 @@ package com.example.news_data.di
 
 import com.example.news_data.BuildConfig
 import com.example.news_data.NewsService
+import com.example.news_data.interceptor.ApiInterceptor
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,6 +14,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val newsDataModule = module {
+
+    factory<ApiInterceptor>(named( "apiKeyInterceptor")) {
+        ApiInterceptor()
+    }
+
     single<OkHttpClient>(named( "news_data_client")) {
         val interceptorLog by lazy {
             HttpLoggingInterceptor()
@@ -23,13 +29,17 @@ val newsDataModule = module {
             .readTimeout(60, TimeUnit.SECONDS)
 
         if (BuildConfig.DEBUG) {
-            okHttpClientBuilder.addInterceptor(interceptorLog)
+            okHttpClientBuilder
+                .addInterceptor(
+                    get<ApiInterceptor>(named("apiKeyInterceptor"))
+                )
+                .addInterceptor(interceptorLog)
         }
 
         okHttpClientBuilder.build()
     }
 
-    single<NewsService> {
+    factory<NewsService> {
         Retrofit.Builder()
             .baseUrl(BuildConfig.NEWS_API_BASE_URL)
             .addCallAdapterFactory(

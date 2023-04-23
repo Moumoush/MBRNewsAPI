@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 
 val newsModule = module {
-    factory <NewsRepository>{ NewsDataRepository()}
+    factory <NewsRepository>{ NewsDataRepository(get())}
 }
