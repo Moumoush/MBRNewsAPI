@@ -57,6 +57,7 @@ android {
 }
 
 dependencies {
+    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
@@ -96,6 +97,7 @@ dependencies {
     implementation rootProject.ext.dependencies.async.coroutines
     implementation rootProject.ext.dependencies.async.coroutines_android
     implementation rootProject.ext.dependencies.async.kotlin_rx2
+    implementation rootProject.ext.dependencies.async.rx2
 
     //Dependency Injection (DI)
     implementation rootProject.ext.dependencies.di.koin
