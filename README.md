@@ -1,12 +1,12 @@
 # MBRNewsAPI
 
-##Disclaimer
+## Disclaimer
 
 Temps de réalisation 7h (avec un blockage de 1h30 -_-" sur un duplicat de classes due aux versions kotlin importées par défaut sur android studio kotlin 1.8 et compose 1.2 --> pas compatibles )
 
 Affichage sommaire
 
-##Choix d'architecture
+## Choix d'architecture
 
 J'ai utilisé une architecture MVVM pour permettre de tester le comportement des écrans de façon "logique"
 
