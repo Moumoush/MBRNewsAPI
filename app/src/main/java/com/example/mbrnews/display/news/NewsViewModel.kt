@@ -20,8 +20,6 @@ import org.koin.core.component.KoinComponent
 /**
  * View model responsible of the display of the articles on screen and reacts to all article related events.
  *
- *
- *
  * @param newsRepository [NewsRepository] repository used to retrieve data related to news
  * @property uiState state used to refresh ui display is composed by States provided by the view components
  */
