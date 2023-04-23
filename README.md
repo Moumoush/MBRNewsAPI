@@ -2,9 +2,11 @@
 
 ## Disclaimer
 
-Temps de réalisation 7h (avec un blockage de 1h30 -_-" sur un duplicat de classes due aux versions kotlin importées par défaut sur android studio kotlin 1.8 et compose 1.2 --> pas compatibles )
+Temps de réalisation 7h (avec un blockage de 1h30 inclu -_-" sur un duplicat de classes due aux versions kotlin importées par défaut sur android studio kotlin 1.8 et compose 1.2 --> pas compatibles )
 
-Affichage sommaire
+Affichage sommaire, le compose est pas très beau il faut le redécouper et éviter les valeurs "en dur"
+
+Commentaires sommaires, mais normalement les fonctions sont bien découpées et courtes (j'ai essayé)
 
 Je voulais ajouter room pour essayer de montrer le fonctionnement du repo avec deux sources de données pour montrer un cas il ferait un peut plus que simple mapper d'objets 
 
@@ -53,3 +55,10 @@ Je n'avais plus de temps, j'ai donc abrégé en donnant un exemple de test unita
 Pour la clef d'api je l'ajoute dans l'intercepteur http de manière pas très sécurisé, une des solutions possibles serait d'encoder la clef en base64 et/ou éventuellement de la charger depuis un fichier c++ ou de la protéger via une règle proguard.
 
 Il est aussi possible sur le git d'utiliser gitcrypt pour éviter de les garder en clair dans le repo 
+
+le minimum de version target c'est OREO car il me semble que c'est la version à partir de laquelle la sécurité a été renforcée sur les téléphones android même si c'est pas trop mon domaine d'expertise
+
+
+## Langues
+
+Il manque la gestion des langues faute de temps.
